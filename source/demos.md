@@ -14,12 +14,14 @@ Check it out [here](/extras/gravity-flowers.html)
 
 ## IGoogle clone (eyegee)
 
-Back in 2013 or so, Google decided to discontinue IGoogle, which was my homepage at the time so I had to build my own. I only recreated the functionality I used from it and it doubled as an [Angular learning exercise](https://github.com/skid/angular-widgetbox). This means that the code is quite obsolete.
+Back in 2013 or so, Google decided to discontinue IGoogle, which was my homepage at the time so I had to build my own because what was on the internet was too bloated. I only recreated the functionality I used from it and it doubled as an [Angular learning exercise](https://github.com/skid/angular-widgetbox). It also made me realize that Angular 1 is not a great framework.
 
-It runs on this server, and you're free to use it [here](http://eyegee.discobot.net)
+I still use it as my homepage, [and you're free to use it too](http://eyegee.discobot.net)
 
 ## The H4 Platform
 
-This is a presentation I gave in late 2018 at H4. It's purpose was to explain abstraction and system design to my Banker/Lawyer buddies and set the tone for the future of the H4 platform.
+This is a presentation I gave in late 2018 at H4. It's purpose was to explain system design and software abstractions to our bizdev guys and the board of directors and lay the conceptual groundwork for the next phase of the H4 platform. It's been redacted a bit to remove specific product names, but it's mostly the same.
+
+Unfortunately most of the presentation is in the talk that I gave with it, but I still think the scriwdriver analogy is a pretty good one when it comes to modular design and abstractions.
 
 Have a look at it [here](/extras/h4-platform)

@@ -14,17 +14,13 @@
 <body class="shower list">
 
     <header class="caption">
-        <h1>The H4 Platform</h1>
-        <p>Yours Truly, DJ</p>
+        <h1>Towards a general H4 platform</h1>
     </header>
 
     <section class="slide" id="cover">
-        <h2>The H4 Platform</h2>
+        <h2>Towards a general H4 platform</h2>
         <figure>
             <img class="cover" src="pictures/cover.png" style="width:100%;height:100%" />
-            <figcaption class="copyright right white">
-                8 Bit Art
-            </figcaption>
         </figure>
         <style>
             #cover h2 {
@@ -114,7 +110,7 @@
         <p>Wrong abstractions have a <b>huge</b> cost.</p>
         <p><br /></p>
         <p class="small">This screwdriver assumes users have <i>hands</i>. Adapting it for machine use would require discarding the entire handle.</p>
-        <p class="small">Pluggable arcitecture somewhat mitigates this by allowing you to make the wrong abstraction as a plugin. For instance, a spoon screw bit.</p>
+        <p class="small">Pluggable arcitecture somewhat mitigates this by allowing you to make the wrong abstraction as a plugin. For instance, screw bit that is a spoon.</p>
         <p class="small">You still need to get the framework and plugin interface right.</p>
         <p><br /></p>
         <p class="small">A story follows -></p>
@@ -144,7 +140,7 @@
         <p>Product points out that cord needs to be detachable in order to twist the handle.</p>
         <p><br /></p>
         <p class="small">After you're done, client says:</p>
-        <p>Oh, but I need to screw wile soldering!</p>
+        <p>Oh, I forgot to mention - I really need to screw <b>while</b> soldering!</p>
         <p><br /></p>
         <p class="small note">Suddenly you feel the enlightenment of a thousand user stories.</p>
         <img class="image" src="pictures/solder.jpg" style="width:40%;bottom:5%;" />
@@ -188,7 +184,7 @@
         <p><br /></p>
         <h2>Why?</h2>
         <p>Because of the Zero/One/Infinity rule.</p>
-        <p class="small">But, seriously, we're not gonna stop at custody...</p>
+        <p class="small">But, seriously, we're not gonna stop at one use case...</p>
         <p class="footer">Part II: The H4 Platform</p>
     </section>
 
@@ -207,11 +203,11 @@
 
     <section class="slide">
         <h2>The plan</h2>
-        <p>Cap Markets and Custody are two "data points" that will enable us to generalize.</p>
+        <p>Each use case is a "data point" that will enable us to generalize.</p>
         <p>We will conceptually split the platform into the <span style="color:brown">"core framework"</span> and <span style="color:brown">"plugins"</span>.</p>
         <p class="small">There's an incredible amount of business analysis required to deliver a use case. We want to <b>confine</b> this to specialized teams and in the future outsource it to third parties.</p>
         <p class="small">Scaling complexity is the most important kind of scaling.</p>
-        <p class="small">Reducing the need for communication is key.</p>
+        <p class="small">Reducing the need for communication between teams is key.</p>
         <p class="footer">Part II: The H4 Platform</p>
     </section>
 
@@ -229,6 +225,7 @@
         <p><br /></p>
         <p>DO YOU CARE?</p>
         <p class="small">Caring costs time and money...</p>
+        <p class="small">We want to abstract away the client's custom needs and give them tools to develop their own screws and screw bits.</p>
         <img class="image" src="pictures/keyrex.png" style="width:40%;bottom:10%;" />
         <p class="footer">Part II: The H4 Platform</p>
     </section>
@@ -239,7 +236,6 @@
 
         <p>The handle will cost you $100. Or, in the true spirit of Cloud Capitalism, the handle is also free, but we charge $1 per twist.</p>
         <img class="image" src="pictures/lathe.jpg" style="width:30%; right: 5%;" />
-        <p class="footer">*Did you notice it's a different lathe? I misplaced the old image ...</p>
     </section>
 
     <section class="slide">

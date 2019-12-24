@@ -8,6 +8,6 @@
     { "title": "More Links" },
     { "title": "Blog", "link": "https://medium.com/@discodancer" },
     { "title": "This website", "link": "this.md" },
-    { "title": "Some demos", "link": "demos.md" }
+    { "title": "Stuff I made", "link": "demos.md" }
   ]
 }
