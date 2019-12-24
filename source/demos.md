@@ -20,7 +20,7 @@ I still use it as my homepage, [and you're free to use it too](http://eyegee.dis
 
 ## The H4 Platform
 
-This is a presentation I gave in late 2018 at H4. It's purpose was to explain system design and software abstractions to our bizdev guys and the board of directors and lay the conceptual groundwork for the next phase of the H4 platform. It's been redacted a bit to remove specific product names, but it's mostly the same.
+This is a presentation I gave in late 2018 at H4. It's purpose was to explain system design and software abstractions to our bizdev guys and the board of directors and lay the conceptual groundwork for the next phase of the H4 platform.
 
 Unfortunately most of the presentation is in the talk that I gave with it, but I still think the scriwdriver analogy is a pretty good one when it comes to modular design and abstractions.
 
