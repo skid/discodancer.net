@@ -1,0 +1,42 @@
+/* Footer */
+
+.slide > footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 50px 100px 25px;
+    background: var(--color-yellow);
+    transition: transform 0.3s linear;
+}
+
+.slide > p.footer {
+    position: absolute;
+    right: 0;
+    bottom: 2%;
+    z-index: 1;
+    font-family: Superstudio;
+    font-size: 50%;
+    width: 100%;
+    padding: 0 50px;
+    text-align: right;
+    opacity: 50%;
+}
+
+/* List */
+
+.shower.list .slide > footer {
+    transform: translateY(100%);
+}
+
+.shower.list .slide.active > footer,
+.shower.list .slide:hover > footer {
+    transform: translateY(0);
+}
+
+/* Full */
+
+.shower.full .slide > footer {
+    display: none;
+}

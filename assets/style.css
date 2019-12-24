@@ -1,0 +1,140 @@
+@import "fonts/fonts.css";
+
+body {
+  font-family: 'PT Sans';
+  font-size: 15px;
+  line-height: 1.5;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: Quicksand;
+  color: #DB1818;
+  margin: 0;
+}
+
+a {
+  color: #DB1818;
+  text-decoration: none;
+}
+
+code {
+  font-family: 'PT Mono';
+  border: solid 1px #c5c5c5;
+}
+
+/** Layout */
+.container {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.container > .left {
+  min-width: 140px;
+  width: 140px;
+  flex: 1 1 140px;
+  text-align: right;
+}
+
+.container > .right {
+  min-width: 92px;
+  margin-right: auto;
+  flex: 1 1 120px;
+}
+
+.container > .main {
+  margin-right: auto;
+  flex: 1 0 480px;
+}
+
+
+header {
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+}
+
+header .avatar {
+  height: 72px;
+  width: 72px;
+  border-radius: 36px;
+  margin: 10px 20px;
+  margin-left: auto;
+}
+
+header .main, header .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header .main h2 {
+  margin: 0;
+}
+
+header .main .contact {
+  font-size: 14px;
+  margin: 5px 0 0;
+  vertical-align: baseline;
+}
+
+header .main .contact .spacer {
+  display: inline-block;
+  width: 5px;
+}
+
+header .main .contact a {
+  color: black;
+  text-decoration: underline;
+}
+
+header .main .contact img {
+  vertical-align: text-bottom;
+  height: 24px;
+}
+
+nav {
+  font-size: 16px;
+  margin: 0 20px;
+  margin-left: auto;
+  border-right: solid 1px black;
+}
+
+nav > * {
+  color: black;
+  display: block;
+  margin: 5px 10px;
+}
+
+nav > a {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+nav > span {
+  font-family: Quicksand;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #DB1818;
+}
+
+nav > span:first-child {
+  margin-top: 0;
+}
+
+p.meta {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+span.meta {
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 2px 4px;
+  border: solid 1px #DB1818;
+}

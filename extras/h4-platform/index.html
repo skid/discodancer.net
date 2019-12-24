@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The H4 Platform</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+    </style>
+</head>
+<body class="shower list">
+
+    <header class="caption">
+        <h1>The H4 Platform</h1>
+        <p>Yours Truly, DJ</p>
+    </header>
+
+    <section class="slide" id="cover">
+        <h2>The H4 Platform</h2>
+        <figure>
+            <img class="cover" src="pictures/cover.png" style="width:100%;height:100%" />
+            <figcaption class="copyright right white">
+                8 Bit Art
+            </figcaption>
+        </figure>
+        <style>
+            #cover h2 {
+                margin: 30px 0 0;
+                color: white;
+                text-align: center;
+                font-size: 50px;
+                font-family: Superstudio;
+                font-weight: normal;
+            }
+
+            #cover p {
+                margin: 10px 0 0;
+                text-align: center;
+                color: white;
+                font-size: 20px;
+            }
+
+            #cover p a {
+                color: white;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="cover w" style="text-align: center">Part I: System design</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Starts with a goal</h2>
+        <p>Drive 6mm <b>phillips</b> screws as <b>cheap</b> as possible. Finish <b>fast</b>.</p>
+        <p><br /></p>
+        <p class="small">Goals are the ultimate gauge for your design.</p>
+        <p class="small">They set the basic engineering constraints.</p>
+        <p class="small">They set apart good from bad design.</p>
+        <p><br /></p>
+        <p class="small"><b>Quality</b> is never a goal.</p>
+        <p class="small">It's part of your culture. It's what you're willing to settle for.</p>
+
+        <img class="image" src="pictures/screw.jpg" style="width:30%;bottom:5%;right:5%" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>Monoliths</h2>
+        <p>Entire systems built to do one job.</p>
+        <p><br /></p>
+        <p class="small">Very efficient and cheap to build.</p>
+        <p class="small">Certain functional aesthetic to them.</p>
+        <p class="small">Hard to maintain. Almost impossible to repurpose.</p>
+        <p><br /></p>
+        <p class="small">This screwdriver is the first product to market. An elegant design that does the job. It makes us money.</p>
+
+        <img class="image" src="pictures/screwdriver.jpg" style="width:30%;bottom:5%;right:5%" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>Opportunities</h2>
+        <p>Now that we're in the screwing business ...</p>
+        <p><br /></p>
+        <p>New Goal: Drive <b>all</b> these screws. Make it <b>cheap</b> and <b>fast</b>.</p>
+        <p><br /></p>
+        <p class="small">Option A: Build a different monolith for each.</p>
+        <p class="small">Option B: Make an abstraction. Innovate.</p>
+        <img class="image" src="pictures/screwheads.jpg" style="width:30%;bottom:5%;right:5%" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>Modular Design</h2>
+        <p>Abstractions allow for: </p>
+        <p class="small"><br /></p>
+        <p class="small"><b>Design economies:</b></p>
+        <p class="small">Exponential reduction in complexity.</p>
+        <p class="small">Specialization: "Handle team", "Chuck Team", "Screw Bit Team"</p>
+        <p class="small"><br /></p>
+        <p class="small"><b>Usage economies:</b></p>
+        <p class="small">Multifunctional tool -> easy repurposing.</p>
+        <p class="small">Replaceable parts -> easy maintenance.</p>
+        <img class="image" src="pictures/screwdriver-modular.jpg" style="width:35%;bottom:10%;right:5%" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>However ...</h2>
+        <p>Wrong abstractions have a <b>huge</b> cost.</p>
+        <p><br /></p>
+        <p class="small">This screwdriver assumes users have <i>hands</i>. Adapting it for machine use would require discarding the entire handle.</p>
+        <p class="small">Pluggable arcitecture somewhat mitigates this by allowing you to make the wrong abstraction as a plugin. For instance, a spoon screw bit.</p>
+        <p class="small">You still need to get the framework and plugin interface right.</p>
+        <p><br /></p>
+        <p class="small">A story follows -></p>
+
+        <img class="image" src="pictures/screwdriver-modular.jpg" style="width:30%;bottom:10%;right:5%" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>And sure enough ...</h2>
+        <p><b>All abstractions</b> are wrong to some degree.</p>
+
+        <p><br /></p>
+        <p class="small">Client:</p>
+        <p>Hey! I find your handle very nice to grip. I would pay you $3M if I could use this as a soldering iron too.</p>
+
+        <p><br /></p>
+        <p class="small">This is the life of a consultancy business...</p>
+
+        <img class="image" src="pictures/solder-iron.jpg" style="width:30%;bottom:10%;right:5%" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>First iteration</h2>
+        <p>Reengineer the entire handle to house a heater.</p>
+        <p>Product points out that cord needs to be detachable in order to twist the handle.</p>
+        <p><br /></p>
+        <p class="small">After you're done, client says:</p>
+        <p>Oh, but I need to screw wile soldering!</p>
+        <p><br /></p>
+        <p class="small note">Suddenly you feel the enlightenment of a thousand user stories.</p>
+        <img class="image" src="pictures/solder.jpg" style="width:40%;bottom:5%;" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>Second iteration</h2>
+        <p>Reengineer the entire handle to house a motor.</p>
+        <p>Reengineer the entire chuck so it can rotate.</p>
+        <p><br /></p>
+        <p class="small">Some wise guy:</p>
+        <p>Hey, since this thing has a motor, can we also make it a drill? You just bend the handle a bit...</p>
+        <img class="image" src="pictures/solderscrew.jpg" style="width:40%;bottom:5%;" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2 class="cover w" style="text-indent: 30%; font-size: 400%">NO!</h2>
+        <img class="image" src="pictures/solderscrewdrill.jpg" style="width:40%;bottom:5%;" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2>Lessons Learned</h2>
+        <p>Abstractions are an <b>investment</b>.</p>
+        <p>They make up most of the engineering.</p>
+        <p>Abandoning them is very expensive.</p>
+        <p>But good ones, just as investments, make you rich.</p>
+        <img class="image" src="pictures/screwdriver-percent.jpg" style="width:40%;bottom:5%;" />
+        <p class="footer">Part I: System Design</p>
+    </section>
+
+    <section class="slide">
+        <h2 class="cover w" style="text-align: center;">Part II: The H4 Platform</h2>
+    </section>
+
+    <section class="slide">
+        <h2>The goal</h2>
+        <p>Basically, deliver any documentation use case.</p>
+        <p><br /></p>
+        <h2>Why?</h2>
+        <p>Because of the Zero/One/Infinity rule.</p>
+        <p class="small">But, seriously, we're not gonna stop at custody...</p>
+        <p class="footer">Part II: The H4 Platform</p>
+    </section>
+
+    <section class="slide">
+        <h2>The challenge</h2>
+        <p>There are quite a bit of differences between use cases.</p>
+        <ul class="small">
+            <li><b>Security contexts</b>: single-tenancy, per-project, per-company, shared</li>
+            <li><b>Metadata</b>: each company has their own taxonomy for the same doc type</li>
+            <li><b>Workflows</b>: documents are created, edited and read differently</li>
+            <li><b>Engineering complexity</b>: hard to tell when there's a general solution</li>
+            <li><b>We're live</b>: Swap the spark plugs without turning off the engine</li>
+        </ul>
+        <p class="footer">Part II: The H4 Platform</p>
+    </section>
+
+    <section class="slide">
+        <h2>The plan</h2>
+        <p>Cap Markets and Custody are two "data points" that will enable us to generalize.</p>
+        <p>We will conceptually split the platform into the <span style="color:brown">"core framework"</span> and <span style="color:brown">"plugins"</span>.</p>
+        <p class="small">There's an incredible amount of business analysis required to deliver a use case. We want to <b>confine</b> this to specialized teams and in the future outsource it to third parties.</p>
+        <p class="small">Scaling complexity is the most important kind of scaling.</p>
+        <p class="small">Reducing the need for communication is key.</p>
+        <p class="footer">Part II: The H4 Platform</p>
+    </section>
+
+    <section class="slide">
+        <h2>What we are building</h2>
+        <p><br /></p>
+        <p><br /></p>
+        <img src="pictures/whatwemake.png" style="width:100%;bottom:5%;" />
+        <p class="footer">Part II: The H4 Platform</p>
+    </section>
+
+    <section class="slide">
+        <h2>Meet Key-Rex</h2>
+        <p>A tamper-resistant screw with an exclusive-to-you pattern, never in stores, used to secure ballot boxes. Patented by <b>Bryce Fastener Inc.</b> ...</p>
+        <p><br /></p>
+        <p>DO YOU CARE?</p>
+        <p class="small">Caring costs time and money...</p>
+        <img class="image" src="pictures/keyrex.png" style="width:40%;bottom:10%;" />
+        <p class="footer">Part II: The H4 Platform</p>
+    </section>
+
+    <section class="slide">
+        <h2>Dear Bryce Fastener Inc.</h2>
+        <p>We don't care about Key-Rex. We are busy with "Handle 2.0". Help yourself with the lathe or pay someone else to make your screw bits.</p>
+
+        <p>The handle will cost you $100. Or, in the true spirit of Cloud Capitalism, the handle is also free, but we charge $1 per twist.</p>
+        <img class="image" src="pictures/lathe.jpg" style="width:30%; right: 5%;" />
+        <p class="footer">*Did you notice it's a different lathe? I misplaced the old image ...</p>
+    </section>
+
+    <section class="slide">
+        <br/>
+        <h2>The End</h2>
+        <figure>
+            <img class="cover" src="pictures/ssd.jpg" style="height:100%; transform:translate(-30%, -50%) scale(0.9) rotate(15deg); border: dashed 10px black" />
+        </figur>
+    </section>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.min.js"></script>
+    <!-- Copyright © 2018 Yours Truly, Famous Inc. -->
+
+</body>
+</html>

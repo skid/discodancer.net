@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Gravity Flowers</title>
+</head>
+<body style="min-width: 1366px">
+  <canvas id="b" style="position: absolute; width:1200px; height:800px; left: 50%; margin-left: -600px; border: solid 1px #ddd; background: transparent;"></canvas>
+  <canvas id="c" style="position: absolute; width:1200px; height:800px; left: 50%; margin-left: -600px; border: solid 1px #ddd; background: transparent;"></canvas>
+  <div style="position: absolute; width: 130px;">
+    <div>
+      <label style="display:block" for="radius">Radius</label>
+      <input type="text" id="radius" value="50">
+    </div>
+    <div>
+      <label style="display:block" for="mass">Mass</label>
+      <input type="text" id="mass" value="5">
+    </div>
+    <div>
+      <label style="display:block" for="speed">Speed</label>
+      <input type="text" id="speed" value="30">
+    </div>
+    <div>
+      <label style="display:block" for="speed">Line Modulo (1-16)</label>
+      <input type="text" id="linemod" value="3">
+    </div>
+    <div>
+      <img style="width:120px; height: 80px; margin: 10px auto;" id="download">
+    </div>
+    <div>
+      <label style="display:block">&nbsp;</label>
+      <label style="display:block"><input type="checkbox" checked id="bodies"> Show Bodies</label>
+      <label style="display:block">&nbsp;</label>
+      <input type="button" id="go" value="Start">
+      <input type="button" id="save" value="Save">
+    </div>
+  </div>
+</body>
+<script>
+var bgcanv = document.getElementById("b");
+var canvas = document.getElementById("c");
+var radius = document.getElementById("radius");
+var speed = document.getElementById('speed');
+var mass = document.getElementById('mass');
+var linemod = document.getElementById('linemod');
+var bodyChk = document.getElementById('bodies');
+var start = document.getElementById('go');
+var save = document.getElementById('save');
+
+// Shortcuts
+var c = canvas.getContext("2d");
+var b = bgcanv.getContext("2d");
+var pi = Math.PI;
+var sqrt = Math.sqrt;
+var pow = Math.pow;
+var min = Math.min;
+var max = Math.max;
+var abs = Math.abs;
+var sin = Math.sin;
+var cos = Math.cos;
+var round = Math.round;
+
+bgcanv.width = 1200;
+bgcanv.height = 800;
+canvas.width = 1200;
+canvas.height = 800;
+
+function Body(x, y, vx, vy, rad, mass){
+  this.x    = x;    // X coordinate
+  this.y    = y;    // Y coordinate
+  this.vx   = vx;   // X velocity
+  this.vy   = vy;   // Y velocity
+  this.rad  = rad;  // Radius
+  this.mass = mass; // Mass
+
+  this.p_x = this.x;
+  this.p_y = this.y;
+}
+
+var T  = +(new Date) / 1000;               // Absolute time
+var GC = 50;                               // Gravity constant
+
+function update(bodies){
+  var fx, fy, body, other, j, dx, dy, dist, fmag, i=0, k=0;
+  var delta = 0.02;
+
+  T += delta;
+  while(body = bodies[i++]){
+    // Calculate the position of the body based on the velocity
+    // Store this in a temp variable so as to not mess up
+    // calculations for other bodies
+    body.p_x = body.x;
+    body.p_y = body.y;
+    body.f_x = body.x + body.vx * delta;
+    body.f_y = body.y + body.vy * delta;
+
+    // Calculate the force acting on the body
+    // and the change in velocity for the next tick.
+    j = 0, fx = 0, fy = 0;
+    while(other = bodies[j++]) {
+      if(body === other) {
+        continue;
+      }
+
+      dx = other.x - body.x;
+      dy = other.y - body.y;
+      dist = sqrt(pow(other.x - body.x, 2) + pow(other.y - body.y, 2));
+      fmag = body.mass * other.mass / pow(dist, 2);
+
+      fx += (fmag * dx / max(dist, body.rad + other.rad));
+      fy += (fmag * dy / max(dist, body.rad + other.rad));
+    }
+
+    body.vx += round(fx / body.mass * GC * 1000000) / 1000000;
+    body.vy += round(fy / body.mass * GC * 1000000) / 1000000;
+  }
+
+  // Now set the new positions of all bodies at once
+  while(body = bodies[k++]){
+    body.x = body.f_x;
+    body.y = body.f_y;
+  }
+}
+
+// Palette from http://www.colourlovers.com/palette/3242360/CLAD_veedi
+var strokes = ["rgba(93,78,96,0.1)", "rgba(73,6,34,0.1)", "rgba(221,236,251,0.1)" , "rgba(184,163,217,0.1)", , "rgba(27,13,42,0.1)"];
+
+function draw(bodies){
+  var next, body, i=0, len = bodies.length;
+
+  b.strokeStyle = "rgba(196, 32, 32, 0.05)"; // Line color
+  c.fillStyle   = "#cc2222";                 // Body color
+
+  while(body = bodies[i++]){
+    c.beginPath();
+    c.arc(round(body.x), round(body.y), body.rad, 0, 2*pi);
+    c.closePath();
+    showBodies && c.fill();
+
+    // Trails
+    next = (bodies[(i + lineModulo) % len]);
+    b.strokeStyle = strokes[i % strokes.length];
+    b.beginPath();
+    b.moveTo(round(body.x), round(body.y));
+    b.lineTo(round(next.x), round(next.y));
+    b.closePath();
+    b.stroke();
+  }
+}
+
+// Render loop, runs all the time.
+function frame(){
+  canvas.width = canvas.width; // Clears the canvas
+  draw(bodies);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// State Globals
+var showBodies = true, bodies, tick;
+var lineModulo = 16;
+function go(){
+  clearInterval(tick);
+  bgcanv.width = bgcanv.width;
+  canvas.width = canvas.width;
+
+  var r = parseFloat(radius.value, 10) || 130;
+  var v = parseFloat(speed.value, 10) || 5;
+  var m = parseFloat(mass.value, 10) || 1;
+  var b = [
+    //  NOTE: You can replace sin(3 * pi / 8) with cos(pi/8) and vice versa
+    [600 + r,                 400,                     0,                  -v,                 5, m],
+    [600 + r * cos(pi/8),     400 - r * sin(pi/8),     -v * sin(pi/8),     -v * cos(pi/8),     5, m],
+    [600 + r * cos(pi/4),     400 - r * sin(pi/4),     -v * sin(pi/4),     -v * cos(pi/4),     5, m],
+    [600 + r * cos(3 * pi/8), 400 - r * sin(3 * pi/8), -v * sin(3 * pi/8), -v * cos(3 * pi/8), 5, m],
+    [600,                     400 - r,                 -v,                 0,                  5, m],
+    [600 - r * cos(3 * pi/8), 400 - r * sin(3 * pi/8), -v * sin(3 * pi/8), v * cos(3 * pi/8),  5, m],
+    [600 - r * cos(pi/4),     400 - r * sin(pi/4),     -v * sin(pi/4),     v * cos(pi/4),      5, m],
+    [600 - r * cos(pi/8),     400 - r * sin(pi/8),     -v * sin(pi/8),     v * cos(pi/8),      5, m],
+    [600 - r,                 400,                     0,                  v,                  5, m],
+    [600 - r * cos(pi/8),     400 + r * sin(pi/8),     v * sin(pi/8),      v * cos(pi/8),      5, m],
+    [600 - r * cos(pi/4),     400 + r * sin(pi/4),     v * sin(pi/4),      v * cos(pi/4),      5, m],
+    [600 - r * cos(3 * pi/8), 400 + r * sin(3 * pi/8), v * sin(3 * pi/8),  v * cos(3 * pi/8),  5, m],
+    [600,                     400 + r,                 v,                  0,                  5, m],
+    [600 + r * cos(3 * pi/8), 400 + r * sin(3 * pi/8), v * sin(3 * pi/8),  -v * cos(3 * pi/8), 5, m],
+    [600 + r * cos(pi/4),     400 + r * sin(pi/4),     v * sin(pi/4),      -v * cos(pi/4),     5, m],
+    [600 + r * cos(pi/8),     400 + r * sin(pi/8),     v * sin(pi/8),      -v * cos(pi/8),     5, m],
+  ];
+
+  lineModulo = Math.min(Math.max(parseInt(linemod.value, 10) || 16, 1), 16);
+  linemod.value = lineModulo;
+  bodies = b.map(function(i){
+    return new Body(i[0], i[1], i[2], i[3], i[4], i[5]);
+  });
+
+  tick = setInterval(function(){ update(bodies); }, 5);
+}
+
+// Bind events
+start.onclick = go;
+save.onclick = function(){
+  document.getElementById('download').src = bgcanv.toDataURL('image/png');
+}
+bodyChk.onclick = function(){
+  showBodies = bodyChk.checked;
+}
+
+go();
+</script>
+</html>

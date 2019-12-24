@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Discodancer - About this website</title>
+    <meta name="description" content="Dushko Jordanovski's personal website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/style.css" media="screen" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="left">
+          <a href="/"><img title="Dushko Jordanovski" class="avatar" src="/assets/images/avatar.png" /></a>
+        </div>
+        <div class="main">
+          <a href="/"><h1>Dushko Jordanovski</h1></a>
+          <p class="contact">
+            <a title="Github" href="https://github.com/skid"><img src="/assets/images/github.png"></a>
+            <a title="LinkedIn" href="https://www.linkedin.com/in/duskojordanovski/"><img src="/assets/images/linkedin.png"></a>
+            <a title="Stack Overflow" href="https://stackoverflow.com/users/36047/disc0dancer"><img src="/assets/images/so.png"></a>
+            <a title="H4" href="https://hfour.com"><img src="/assets/images/h4.png"></a>
+          </p>
+        </div>
+        <div class="right"></div>
+      </div>
+    </header>
+
+    <main class="container">
+        <div class="left">
+          <nav>
+            <span>More Links</span>
+<a href="https://medium.com/@discodancer">Blog</a>
+<span>Stuff</span>
+<a href="/this.html">This website</a>
+<a href="/igoogle-clone.html">IGoogle Clone</a>
+<a href="/gravity-flowers.html">Gravity flowers</a>
+<a href="/the-h4-platform.html">The H4 Platform</a>
+          </nav>
+        </div>
+        <div class="main">
+          <p class="meta"><span class="meta">2019-12-24</span></p>
+          <h2 id="about-this-website">About this website</h2>
+<p>This is a static website generated from Markdown files. It&#39;s a super minimalistic static site generator that I wrote because what&#39;s <a href="https://www.linode.com/docs/websites/static-sites/how-to-choose-static-site-generator/">available</a> around the net these days is total overkill. The source is 100 lines of Typescript and it&#39;s actually <a href="/engine">served here</a> because why not? It&#39;s deployed via a git hook, from the site&#39;s public repo.</p>
+<h2 id="how-it-works">How it works</h2>
+<ol>
+<li>Create a Markdown file in <code>/source</code></li>
+<li>Add a navigation link to it in <code>/source/_config.json</code></li>
+<li>Run <code>node engine</code> from the root dir to build the html pages.</li>
+<li>Git commit</li>
+<li>Push to git repo and the hook will copy it to my server</li>
+<li>If you want to change anything about the look and feel, do it in <code>assets/template.html</code> and <code>assets/style.css</code>, then rebuild.</li>
+</ol>
+
+        </div>
+        <div class="right"></div>
+    </main>
+    <footer>
+      <br />
+      <br />
+      <br />
+    </footer>
+  </body>
+</html>

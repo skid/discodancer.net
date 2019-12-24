@@ -1,0 +1,4 @@
+**/*.log
+engine/node_modules
+uploads/*
+!uploads/README.md

@@ -1,0 +1,17 @@
+{
+  "name": "stativa",
+  "version": "1.0.0",
+  "description": "A dead simple static blog generator",
+  "main": "index.js",
+  "author": "Dushko Jordanovski <jordanovskid@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.1.0",
+    "@types/marked": "^0.7.2",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.2",
+    "marked": "^0.8.0"
+  }
+}

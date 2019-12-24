@@ -1,0 +1,39 @@
+/* Cover */
+
+.cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Fitting */
+
+.cover.w,
+.cover.width {
+    width: 100%;
+    max-height: none;
+}
+
+.cover.h,
+.cover.height {
+    height: 100%;
+    max-width: none;
+}
+
+.image {
+    position: absolute;
+    z-index: -1;
+    width: 50%;
+    right: 0;
+    bottom: 0;
+}
+
+.full-image {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+}
