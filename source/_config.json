@@ -7,10 +7,7 @@
   "nav": [
     { "title": "More Links" },
     { "title": "Blog", "link": "https://medium.com/@discodancer" },
-    { "title": "Stuff" },
     { "title": "This website", "link": "this.md" },
-    { "title": "IGoogle Clone", "link": "igoogle-clone.md" },
-    { "title": "Gravity flowers", "link": "gravity-flowers.md" },
-    { "title": "The H4 Platform", "link": "the-h4-platform.md" }
+    { "title": "Some demos", "link": "demos.md" }
   ]
 }
