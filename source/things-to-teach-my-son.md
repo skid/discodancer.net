@@ -1,6 +1,6 @@
 ---
 title: Things to teach my son
-tate: 2020-01-08
+date: 2020-01-08
 ---
 
 # Things to teach my son
