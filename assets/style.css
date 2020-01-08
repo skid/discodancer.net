@@ -139,3 +139,8 @@ span.meta {
   padding: 2px 4px;
   border: solid 1px #DB1818;
 }
+
+
+@media (max-width: 700px) {
+  /* PUT CSS HERE TO ALTER WEBSITE TO SINGLE COLUMN */
+}
