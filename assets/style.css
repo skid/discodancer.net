@@ -5,7 +5,7 @@ body {
   font-size: 15px;
   line-height: 1.5;
   background-color: #f5f5f5;
-  margin: 0;
+  margin: 20px 0 0 0;
   padding: 0;
   overflow-y: scroll;
 }
@@ -27,6 +27,80 @@ code {
 }
 
 /** Layout */
+header, main {
+  min-width: 200px;
+  max-width: 720px;
+  height: 84px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact {
+  margin: 0;
+}
+
+.contact a img {
+  vertical-align: text-bottom;
+  height: 24px;
+}
+
+nav {
+  font-size: 16px;
+  text-align: right;
+  width: 110px;
+  box-sizing: border-box;
+  position: absolute;
+  margin-left: -130px;
+}
+
+nav .avatar {
+  height: 72px;
+  width: 72px;
+  border-radius: 36px;
+}
+
+nav .links {
+  padding-right: 10px;
+  border-right: solid 1px black;
+}
+
+.links > * {
+  color: black;
+  display: block;
+}
+
+.links > a {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.links > span {
+  font-family: Quicksand;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #DB1818;
+}
+
+.links > span:first-child {
+  margin-top: 0;
+}
+
+.date {
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 2px 4px;
+  border: solid 1px #DB1818;
+}
+
+@media (max-width: 960px) {
+  header, main {
+    margin-left: 110px;
+  }
+}
+
+/**
 .container {
   max-width: 960px;
   margin: auto;
@@ -130,17 +204,4 @@ nav > span:first-child {
 p.meta {
   margin: 0;
   margin-bottom: 10px;
-}
-
-span.meta {
-  color: black;
-  font-weight: bold;
-  font-size: 12px;
-  padding: 2px 4px;
-  border: solid 1px #DB1818;
-}
-
-
-@media (max-width: 700px) {
-  /* PUT CSS HERE TO ALTER WEBSITE TO SINGLE COLUMN */
 }
