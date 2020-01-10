@@ -16,6 +16,11 @@ h1, h2, h3 {
   margin: 0;
 }
 
+header h1 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 a {
   color: #DB1818;
   text-decoration: none;
