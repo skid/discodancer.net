@@ -6,37 +6,47 @@
     <title>Discodancer - Interesting links</title>
     <meta name="description" content="Dushko Jordanovski's personal website">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-794635-8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-794635-8');
+    </script>
     <link rel="stylesheet" href="/assets/style.css" media="screen" />
   </head>
 
   <body>
     <header>
       <nav>
+        <img id="toggle-menu" class="responsive-menu-toggle" src="/assets/images/hamburger.png" />
         <a href="/">
           <img title="Dushko Jordanovski" class="avatar" src="/assets/images/avatar.png" />
         </a>
-        <p class="links">
-          <span>More Links</span>
-<a href="https://medium.com/@discodancer">Blog</a>
-<a href="/this.html">This website</a>
-<a href="/demos.html">Stuff I made</a>
-        </p>
+        <div id="nav-menu" class="links">
+          <a href="https://medium.com/@discodancer">Blog</a>
+<a href="/links.html">Bookmarks</a>
+<a href="/demos.html">My stuff</a>
+<a href="/this.html">This site</a>
+        </div>
       </nav>
-
-      <a href="/"><h1>Dushko Jordanovski</h1></a>
-      <p class="contact">
+      <div class="contact">
+        <a href="/"><h1>Dushko Jordanovski</h1></a>
         <a title="Github" href="https://github.com/skid"><img src="/assets/images/github.png"></a>
         <a title="LinkedIn" href="https://www.linkedin.com/in/duskojordanovski/"><img src="/assets/images/linkedin.png"></a>
         <a title="Stack Overflow" href="https://stackoverflow.com/users/36047/disc0dancer"><img src="/assets/images/so.png"></a>
         <a title="H4" href="https://hfour.com"><img src="/assets/images/h4.png"></a>
         <a title="Mail" href="mailto:jordanovskid@gmail.com"><img src="/assets/images/mail.png"></a>
-      </p>
+      </div>
     </header>
     <main>
-      <p class="meta"><span class="date">2020-1-8</span></p>
-      <h1 id="some-interesting-links">Some interesting links</h1>
+      <p class="meta"><span class="date">2020-1-13</span></p>
+      <h2 id="some-interesting-links-not-in-any-order">Some interesting links, not in any order</h2>
 <ol>
 <li><a href="https://kirstenhacker.wordpress.com/2019/08/24/new-dark-age/">New Dark Age</a>: &quot;<em>He has described a situation in which a model cannot be falsified. Instead, the model lasts for as long as people believe in it. That is religion, not science.</em>&quot;</li>
+<li><a href="https://waitbutwhy.com/2019/08/story-of-us.html">The story of us</a>. An amazing and long blog post series that sets up its own language and thinking framework to explain modern society and how to reason about it.</li>
 </ol>
 
     </main>
@@ -45,5 +55,15 @@
       <br />
       <br />
     </footer>
+    <script>
+      document.getElementById('toggle-menu').addEventListener('click', function() {
+        const menu = document.getElementById('nav-menu');
+        if (menu.classList.contains('shown')) {
+          menu.classList.remove('shown');
+        } else {
+          menu.classList.add('shown');
+        }
+      });
+    </script>
   </body>
 </html>

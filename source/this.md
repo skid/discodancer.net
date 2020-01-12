@@ -5,7 +5,7 @@ date: 2019-12-24
 
 ## About this website
 
-This is a static website generated from Markdown files. It's a super minimalistic static site generator that I wrote because what's [available](https://www.linode.com/docs/websites/static-sites/how-to-choose-static-site-generator/) around the net these days is total overkill. The source is 100 lines of Typescript and it's actually [served here](/engine) because why not? It's deployed via a git hook, from the site's public repo.
+This is a static website generated from Markdown files. It's a super minimalistic static site generator that I wrote because what's [available](https://www.linode.com/docs/websites/static-sites/how-to-choose-static-site-generator/) around the net these days is total overkill. The source is 100 lines of Typescript and it's actually [served here](/engine) because why not? It's deployed via a git hook, from the site's [public repo](https://github.com/skid/discodancer.net).
 
 ## How it works
 

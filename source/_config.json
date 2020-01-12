@@ -5,9 +5,9 @@
   "titlePrefix": "Discodancer",
   "defaultMetaDescription": "Dushko Jordanovski's personal website",
   "nav": [
-    { "title": "More Links" },
     { "title": "Blog", "link": "https://medium.com/@discodancer" },
-    { "title": "This website", "link": "this.md" },
-    { "title": "Stuff I made", "link": "demos.md" }
+    { "title": "Bookmarks", "link": "links.md" },
+    { "title": "My stuff", "link": "demos.md" },
+    { "title": "This site", "link": "this.md" }
   ]
 }
