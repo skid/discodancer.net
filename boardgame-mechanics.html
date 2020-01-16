@@ -1,0 +1,149 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Discodancer - Board game mechanics</title>
+    <meta name="description" content="Dushko Jordanovski's personal website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-794635-8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-794635-8');
+    </script>
+    <link rel="stylesheet" href="/assets/style.css" media="screen" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <img id="toggle-menu" class="responsive-menu-toggle" src="/assets/images/hamburger.png" />
+        <a href="/">
+          <img title="Dushko Jordanovski" class="avatar" src="/assets/images/avatar.png" />
+        </a>
+        <div id="nav-menu" class="links">
+          <a href="https://medium.com/@discodancer">Blog</a>
+<a href="/links.html">Bookmarks</a>
+<a href="/my-stuff.html">My stuff</a>
+<a href="/this.html">This site</a>
+        </div>
+      </nav>
+      <div class="contact">
+        <a href="/"><h1>Dushko Jordanovski</h1></a>
+        <a title="Github" href="https://github.com/skid"><img src="/assets/images/github.png"></a>
+        <a title="LinkedIn" href="https://www.linkedin.com/in/duskojordanovski/"><img src="/assets/images/linkedin.png"></a>
+        <a title="Stack Overflow" href="https://stackoverflow.com/users/36047/disc0dancer"><img src="/assets/images/so.png"></a>
+        <a title="H4" href="https://hfour.com"><img src="/assets/images/h4.png"></a>
+        <a title="Mail" href="mailto:jordanovskid@gmail.com"><img src="/assets/images/mail.png"></a>
+      </div>
+    </header>
+    <main>
+      <p class="meta"><span class="date">2020-1-15</span></p>
+      <h2 id="stream-based-economy">Stream-based economy</h2>
+<p>All resources are streams, so you manage bandwidths and buffers, but you don&#39;t really collect anything and make transactions, just increase and reduce bandwidth.</p>
+<h2 id="bluff-victory-condition">Bluff victory condition</h2>
+<blockquote>
+<p>This is actually implemented in Dune, the board game. If you&#39;re playing as Bene Geserit, you make a bet at the start of the game as to who is going to win and in which turn. However, this idea be stretched a lot further.</p>
+</blockquote>
+<p>The basic game (non-metagame) plays out as a normal game, with several victory conditions. However, players bet on who is going to win, and how, and if they have the correct bet, they win instead. They might want to help the “proxy” player win so they can steal the win, or form an alliance. If they suspect this plan, the opponents might try to deliberately lose, or change their victory plan.</p>
+<p>In order to “steal” a win, you need to make 2 actions, the first of which is visible to everyone. This will signal your intention to steal a win, but it might be used as a red herring to lure other players into focusing their efforts into stopping you.</p>
+<p>The non-metagame should not be overly complex to allow people into thinking more about the metagame. The game should allow temporary alliances which can be double-edged swords - they are helping people to win regularly and to steal a win at the same time.</p>
+<h2 id="a-tragedy-of-the-commons-game">A &quot;Tragedy of the Commons&quot; game</h2>
+<p>Players bet on “low tech” or “hi tech”.</p>
+<p>Low tech perfects skills for survival while hi tech practices skills for advancing, but it’s dependent on infrastructure.</p>
+<p>In a hi tech world, hi tech would win, but by competing for victory hi tech brings the world closer to an apocalypse. If the apocalypse happens, low tech has a HUGE advantage.</p>
+<p>Now, the trick is to simulate humanity. Low tech can’t bring the world closer to apocalypse, only hi tech can do that by over-competing. There are basically 4 outcomes</p>
+<ol>
+<li>No apocalypse, investors in low tech have a very hard time and nothing to do.</li>
+<li>Apocalypse late in the game: hi tech has amassed enough advantage to win.</li>
+<li>Apocalypse earlier in the game: low tech has easier time winning.</li>
+<li>Apocalypse, late enough for hi tech to hedge against it.</li>
+</ol>
+<p>This is basically a survival game, and mimics technologically advanced societies and environmental wear out. The &quot;low tech&quot; and &quot;hi tech&quot; concepts are not discrete things that you do in the game but are rather resulting game states of the various actions you take during the game.</p>
+<h3 id="rough-sketch-of-mechanic">Rough sketch of mechanic</h3>
+<ol>
+<li>Apocalypse marker is moved on a track (or several mutually reinforcing tracks, like in Terraforming Mars)</li>
+<li>Gain more points by bringing it closer to apocalypse</li>
+<li>Hedge against apocalypse</li>
+<li>Deliberately cause apocalypse (only one player can do this, to represent the minority of “crazy” people in this world)</li>
+<li>Move away from apocalypse requires investment by other all players.</li>
+<li>There are different game props which become unlock based on the game state. Some cards enter play when the apocalypse markers get to a certain threshold value</li>
+</ol>
+<h2 id="a-multi-person-prisoners-dilemma-party-game">A multi-person prisoner&#39;s dilemma party game</h2>
+<p>Basic rules:</p>
+<h3 id="automatic-challenge-phase">Automatic: Challenge Phase</h3>
+<ol>
+<li>A <strong>challenge</strong> is determined, which is a the amount of spending required by the people to avoid <strong>crisis</strong> and trigger <strong>prosperity</strong>.</li>
+<li>A <strong>reward</strong> is determined, which is the amount that will be divided proportionally among the people if the challenge is met.</li>
+<li>The challenge is unknown to the people.</li>
+<li>The reward is announced to everyone.</li>
+</ol>
+<h3 id="election-phase">Election Phase</h3>
+<ol>
+<li>The people elect a ruler for the round by voting.</li>
+<li>The ruler gets the following information:<ol>
+<li>The challenge</li>
+<li>The individual current wealth of all people</li>
+</ol>
+</li>
+</ol>
+<h3 id="tax-phase">Tax Phase</h3>
+<ol>
+<li>The ruler determines a tax rate as a percentage between 0 and <code>[X]</code></li>
+<li>The ruler communicates the tax rate to the people.</li>
+<li>The people have a chance to respond to that, and possibly overthrow the ruler. If the ruler is overthrown, the round ends with a crisis and everyone loses <code>[X]%</code> of their wealth. The challenge does not change.</li>
+<li>The tax is deduced from the people&#39;s wealth, but not from the ruler (the ruler does not pay tax).</li>
+<li>The ruler then decides what portion of the tax to <strong>steal</strong>, adding it to his wealth. This amount is known only to the ruler.</li>
+<li>The rest of the collected tax is <strong>public spending</strong>.</li>
+</ol>
+<h3 id="investment-phase">Investment Phase</h3>
+<ol>
+<li>The ruler tries to communicate to the people how much to spend to avert crisis and trigger prosperity.</li>
+<li>The people individually, and in secret, decide on an amount to spend. The sum of people&#39;s spending is called <strong>private spending</strong>.</li>
+<li>The ruler can&#39;t spend money, but he always has a &quot;granted&quot; investment of &quot;1&quot;.</li>
+</ol>
+<h3 id="automatic-crisis--prosperity-phase">Automatic: Crisis / Prosperity Phase</h3>
+<ol>
+<li>If the challenge is met or exceeded by the total of public and private spending, prosperity ensues.</li>
+<li>During prosperity, each person that invested money receives more money then they spent. The ruler receives a <strong>popularity token</strong>, but no money since they didn&#39;t spend.</li>
+<li>If the challenge is not met, then crisis happens. Nobody gains anything, and their investments and tax are wasted.</li>
+</ol>
+<h3 id="communication-rules">Communication Rules</h3>
+<ol>
+<li>Players may <strong>NEVER</strong> utter any numbers. They may use terms as &quot;low&quot;, &quot;high&quot; and compare values in an ordinal manner, but they can&#39;t say by how much.</li>
+<li>The ruler can&#39;t disclose whether a person is richer than another person. He may say that there are very rich people or very poor people around.</li>
+<li>The ruler may disclose that a person is richer/poorer than when he was last time in office.</li>
+<li>All players may, of course, lie.</li>
+</ol>
+<h3 id="bankruptcy">Bankruptcy</h3>
+<ol>
+<li>If a person reaches 0 money they are officially bankrupt and they leave the game. (Why?)</li>
+</ol>
+<h3 id="additions">Additions</h3>
+<ol>
+<li>Alternative victory: People with lower score need an alternative path to victory, which is not related to the amount of money they have.</li>
+<li>Gain in crisis, lose in prosperity: Need a way for players to bet on whether a crisis is going to happen or not, and be able to gain money during crisis and lose money during prosperity.</li>
+</ol>
+
+    </main>
+    <footer>
+      <br />
+      <br />
+      <br />
+    </footer>
+    <script>
+      document.getElementById('toggle-menu').addEventListener('click', function() {
+        const menu = document.getElementById('nav-menu');
+        if (menu.classList.contains('shown')) {
+          menu.classList.remove('shown');
+        } else {
+          menu.classList.add('shown');
+        }
+      });
+    </script>
+  </body>
+</html>

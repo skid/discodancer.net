@@ -1,5 +1,5 @@
 ---
-title: Some demos
+title: Some stuff I did
 date: 2019-12-24
 ---
 Some stuff I've made over the last X years. A lot of it is outdated most likely, but whatever.

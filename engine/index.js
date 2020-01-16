@@ -9,7 +9,6 @@ const gray_matter_1 = __importDefault(require("gray-matter"));
 const marked_1 = __importDefault(require("marked"));
 let config = {
     index: "index.md",
-    navSpanElement: "span",
     titlePrefix: "Untitled",
     defaultMetaDescription: "No description",
     nav: []
@@ -56,7 +55,7 @@ catch {
 }
 const navHTML = config.nav.map((obj) => {
     if (!obj.link) {
-        return `<${config.navSpanElement}>${obj.title}</${config.navSpanElement}>`;
+        return `<span>${obj.title}</span>`;
     }
     else if (obj.link.match(/^(http(s)?:\/\/)/)) {
         return `<a href="${obj.link}">${obj.title}</a>`;
@@ -70,6 +69,20 @@ const navHTML = config.nav.map((obj) => {
         return `<a href="/${fname}.html">${obj.title}</a>`;
     }
 }).join('\n');
+// Clean up old html pages before generating new ones
+// Important so that we remove htmls when we remove source .md files.
+fs_1.readdirSync(rootPath).filter(fname => fname.endsWith('.html')).forEach(fname => {
+    const pth = path_1.normalize(`${rootPath}/${fname}`);
+    try {
+        const stats = fs_1.statSync(pth);
+        if (stats.isFile()) {
+            fs_1.unlinkSync(pth);
+        }
+    }
+    catch {
+        console.log(`Can't stat or unlink ${pth}`);
+    }
+});
 sources.forEach(createPage);
 /**
  * Creates a page from a source.

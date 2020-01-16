@@ -7,7 +7,7 @@
   "nav": [
     { "title": "Blog", "link": "https://medium.com/@discodancer" },
     { "title": "Bookmarks", "link": "links.md" },
-    { "title": "My stuff", "link": "demos.md" },
+    { "title": "My stuff", "link": "my-stuff.md" },
     { "title": "This site", "link": "this.md" }
   ]
 }

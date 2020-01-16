@@ -1,11 +1,10 @@
-import { readdirSync, readFileSync, fstat, writeFileSync } from 'fs';
+import { readdirSync, readFileSync, fstat, writeFileSync, stat, statSync, unlinkSync } from 'fs';
 import { normalize } from 'path';
 import matter from 'gray-matter';
 import marked from 'marked';
 
 let config = {
   index: "index.md",
-  navSpanElement: "span",
   titlePrefix: "Untitled",
   defaultMetaDescription: "No description",
   nav: [] as { title: string; link?: string }[]
@@ -56,7 +55,7 @@ try {
 
 const navHTML = config.nav.map((obj) => {
   if (!obj.link) {
-    return `<${config.navSpanElement}>${obj.title}</${config.navSpanElement}>`;
+    return `<span>${obj.title}</span>`;
   } else if (obj.link.match(/^(http(s)?:\/\/)/)) {
     return `<a href="${obj.link}">${obj.title}</a>`;
   } else {
@@ -69,6 +68,21 @@ const navHTML = config.nav.map((obj) => {
     return `<a href="/${fname}.html">${obj.title}</a>`;
   }
 }).join('\n');
+
+
+// Clean up old html pages before generating new ones
+// Important so that we remove htmls when we remove source .md files.
+readdirSync(rootPath).filter(fname => fname.endsWith('.html')).forEach(fname => {
+  const pth = normalize(`${rootPath}/${fname}`);
+  try {
+    const stats = statSync(pth);
+    if (stats.isFile()) {
+      unlinkSync(pth);
+    }
+  } catch {
+    console.log(`Can't stat or unlink ${pth}`);
+  }
+});
 
 sources.forEach(createPage);
 

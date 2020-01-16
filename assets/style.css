@@ -16,6 +16,10 @@ h1, h2, h3 {
   margin: 0;
 }
 
+h2 {
+  color: #DB1818;
+}
+
 header h1 {
   color: #DB1818;
   white-space: nowrap;
@@ -31,6 +35,10 @@ a {
 code {
   font-family: 'PT Mono';
   border: solid 1px #c5c5c5;
+}
+
+blockquote {
+  font-style: italic;
 }
 
 /** Layout */

@@ -5,9 +5,9 @@ date: 2020-01-08
 
 # Things to teach my son
 
-Now that I have a son, I thought I should write down all the things that I deem super important that my son should know.
+Now that I have a son, I thought I should write down all the super important things that I think my son should know.
 
-1. The idea behind the theoury of evolution.
+1. The idea behind the theory of evolution.
 2. The idea behind Entropy.
 3. The idea behind the scientific method.
 4. How to find meaning in life, despite the heat death of the universe.
