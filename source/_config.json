@@ -9,6 +9,6 @@
     { "title": "My stuff", "link": "my-stuff.md" },
     { "title": "This site", "link": "this.md" },
     { "title": "Blog" },
-    { "title": "On trust and management", "link": "trust.md" }
+    { "title": "Trust", "link": "trust.md" }
   ]
 }
