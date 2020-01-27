@@ -51,6 +51,12 @@ header, main {
   padding-right: 20px;
 }
 
+main img {
+  display: block;
+  max-width: 100%;
+  margin: 5px auto;
+}
+
 .contact img {
   vertical-align: text-bottom;
   height: 24px;

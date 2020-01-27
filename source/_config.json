@@ -5,9 +5,10 @@
   "titlePrefix": "Discodancer",
   "defaultMetaDescription": "Dushko Jordanovski's personal website",
   "nav": [
-    { "title": "Blog", "link": "https://medium.com/@discodancer" },
     { "title": "Bookmarks", "link": "links.md" },
     { "title": "My stuff", "link": "my-stuff.md" },
-    { "title": "This site", "link": "this.md" }
+    { "title": "This site", "link": "this.md" },
+    { "title": "Blog" },
+    { "title": "On trust and management", "link": "trust.md" }
   ]
 }
