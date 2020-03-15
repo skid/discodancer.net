@@ -1,0 +1,11 @@
+{
+  "template": "template.html",
+  "index": "day-one.md",
+  "navSpanElement": "span",
+  "titlePrefix": "Discodancer",
+  "defaultMetaDescription": "Fourteen Days of Quarantine",
+  "nav": [
+    { "title": "Hompage", "link": "/" },
+    { "title": "Day One", "link": "day-one.md" }
+  ]
+}
