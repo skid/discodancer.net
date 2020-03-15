@@ -1,6 +1,6 @@
 import matter from 'gray-matter';
 import marked from 'marked';
-import { normalize } from 'path';
+import { normalize, parse } from 'path';
 import { readdirSync, readFileSync, writeFileSync, statSync, unlinkSync, rmdirSync, mkdirSync } from 'fs';
 
 let config = {
@@ -30,7 +30,11 @@ function cleanUp(dirPath: string = rootPath) {
   readdirSync(dirPath).forEach(fname => {
     const filePath = `${dirPath}/${fname}`;
     const stats = statSync(normalize(filePath));
-    if (stats.isDirectory() && reservedDirs.find(name => name === fname)) {
+    if (
+      stats.isDirectory() &&
+      !fname.startsWith('.') &&
+      !reservedDirs.find(name => name === fname)
+    ) {
       cleanUp(filePath);
     } else if (stats.isFile() && (fname.endsWith('html') || fname === '_config.json')) {
       unlinkSync(filePath);
@@ -45,67 +49,57 @@ function cleanUp(dirPath: string = rootPath) {
 // at the equivalent location
 function parseSources(dirPath: string = sourceDirPath) {
   let sources: string[] = [];
+  const targetDirPath = `${rootPath}/${dirPath.substr(sourceDirPath.length)}`;
 
   if (dirPath !== sourceDirPath) {
-    mkdirSync(dirPath);
+    mkdirSync(targetDirPath);
   }
 
   try {
-    sources = readdirSync(sourceDirPath);
+    sources = readdirSync(dirPath);
   } catch {
-    console.log(`Invalid source directory ${sourceDirPath}`);
+    console.log(`Invalid source directory ${dirPath}`);
     process.exit(1);
   }
 
   if (!sources.find((fname) => fname === "_config.json")) {
-    console.log(`Source directory ${sourceDirPath} does not contain a _config.json file`);
+    console.log(`Source directory ${dirPath} does not contain a _config.json file`);
     process.exit(1);
   }
 
   sources = sources.filter((s) => s !== "_config.json");
 
   try {
-    const configStr = readFileSync(normalize(`${sourceDirPath}/_config.json`), 'utf-8');
+    const configStr = readFileSync(normalize(`${dirPath}/_config.json`), 'utf-8');
     config = Object.assign({}, config, JSON.parse(configStr));
   } catch {
     console.log("Invalid source/_config.json file.");
     process.exit(1);
   }
 
-  const navHTML = config.nav.map((obj) => {
-    if (!obj.link) {
-      return `<span>${obj.title}</span>`;
-    } else if (obj.link.match(/^(http(s)?:\/\/)/)) {
-      return `<a href="${obj.link}">${obj.title}</a>`;
-    } else {
-      if (sources.findIndex((s) => s === obj.link) === -1) {
-        console.warn(
-          `Broken link: "${obj.title}" links to "${obj.link}" which is not in the source dir`);
-      }
-      const ext = obj.link.substring(obj.link.lastIndexOf('.'));
-      const fname = obj.link.substring(0, obj.link.length - ext.length);
-      return `<a href="/${fname}.html">${obj.title}</a>`;
-    }
-  }).join('\n');
+  const navHTML = config.nav.map((obj) =>
+    obj.link ? `<a href="${obj.link}">${obj.title}</a>` : `<span>${obj.title}</span>`
+  ).join('\n');
 
   sources.forEach((name) => {
-    if (statSync(normalize(`${sourceDirPath}/${name}`)).isDirectory()) {
+    console.log(dirPath, name);
+    if (statSync(normalize(`${dirPath}/${name}`)).isDirectory()) {
       parseSources(`${dirPath}/${name}`);
     } else {
-      createPage(name, navHTML, `${rootPath}/${dirPath.substr(sourceDirPath.length)}`);
+      createPage(`${dirPath}/${name}`, navHTML, targetDirPath);
     }
   });
 }
 
 // Creates a html page from a source markdown file.
 // Places it in a the same directory relative to the site root.
-function createPage(fname: string, navHTML: string, dirPath: string = rootPath) {
-  const isMarkdown = fname.endsWith(".md");
-  const isHTML = fname.endsWith(".html");
-  const { content, data } = matter.read(normalize(`${sourceDirPath}/${fname}`));
+function createPage(path: string, navHTML: string, dirPath: string = rootPath) {
+  const isMarkdown = path.endsWith(".md");
+  const isHTML = path.endsWith(".html");
+  const { content, data } = matter.read(path);
 
   if (isMarkdown) {
-    const pagename = fname.replace(/\.md$/, "");
+    const pagename = parse(path).name;
     const html = marked(content);
     const result = TEMPLATE.replace(/\{\{(.+)\}\}/g, (_match, varName) => {
       switch(varName) {
@@ -117,14 +111,14 @@ function createPage(fname: string, navHTML: string, dirPath: string = rootPath) 
           return navHTML;
         case "date":
             if (!(data.date instanceof Date)) {
-              console.warn(`Missing front matter date in ${fname}`);
+              console.warn(`Missing front matter date in ${path}`);
               return data.date || "Unknown";
             }
             return `${data.date.getFullYear()}-${data.date.getMonth() + 1}-${data.date.getDate()}`;
         case "content":
           return marked(content);
         default:
-          console.warn(`Missing content for template var ${varName} in ${fname}`);
+          console.warn(`Missing content for template var ${varName} in ${path}`);
           return `{{ -?- ${varName} -?- }}`;
       }
     });

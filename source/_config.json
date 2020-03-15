@@ -5,10 +5,11 @@
   "titlePrefix": "Discodancer",
   "defaultMetaDescription": "Dushko Jordanovski's personal website",
   "nav": [
-    { "title": "Bookmarks", "link": "links.md" },
-    { "title": "My stuff", "link": "my-stuff.md" },
-    { "title": "This site", "link": "this.md" },
+    { "title": "Bookmarks", "link": "links.html" },
+    { "title": "My stuff", "link": "my-stuff.html" },
+    { "title": "This site", "link": "this.html" },
     { "title": "Blog" },
-    { "title": "Trust", "link": "trust.md" }
+    { "title": "Trust", "link": "trust.html" },
+    { "title": "Quarantine", "link": "quarantine/day-one.html" }
   ]
 }

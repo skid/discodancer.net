@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Discodancer - Some stuff I did</title>
-    <meta name="description" content="Dushko Jordanovski's personal website">
+    <title>Discodancer - About this website</title>
+    <meta name="description" content="Fourteen Days of Quarantine">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-794635-8"></script>
@@ -45,18 +45,17 @@
     </header>
     <main>
       <p class="meta"><span class="date">2019-12-24</span></p>
-      <p>Some stuff I&#39;ve made over the last X years. A lot of it is outdated most likely, but whatever.</p>
-<h2 id="gravity-flowers">Gravity flowers</h2>
-<p>A simplistic and (probably wrong) physics engine that spins a bunch of dots in 2D space simulating gravity. You can control the mass, initial speed and initial distance between the dots and see where they end up.</p>
-<p>The cool idea was to draw lines connecting pairs of dots as they move which ended up rendering interesting images. You can also save the image by righ-clicking the generated snapshot on the right.</p>
-<p>Check it out <a href="/extras/gravity-flowers.html">here</a></p>
-<h2 id="igoogle-clone-eyegee">IGoogle clone (eyegee)</h2>
-<p>Back in 2013 or so, Google decided to discontinue IGoogle, which was my homepage at the time so I had to build my own because what was on the internet was too bloated. I only recreated the functionality I used from it and it doubled as an <a href="https://github.com/skid/angular-widgetbox">Angular learning exercise</a>. It also made me realize that Angular 1 is not a great framework.</p>
-<p>I still use it as my homepage, <a href="http://eyegee.discobot.net">and you&#39;re free to use it too</a></p>
-<h2 id="the-h4-platform">The H4 Platform</h2>
-<p>This is a presentation I gave in late 2018 at H4. It&#39;s purpose was to explain system design and software abstractions to our bizdev guys and the board of directors and lay the conceptual groundwork for the next phase of the H4 platform.</p>
-<p>Unfortunately most of the presentation is in the talk that I gave with it, but I still think the scriwdriver analogy is a pretty good one when it comes to modular design and abstractions.</p>
-<p>Have a look at it <a href="/extras/h4-platform">here</a></p>
+      <h2 id="about-this-website">About this website</h2>
+<p>This is a static website generated from Markdown files. It&#39;s a super minimalistic static site generator that I wrote because what&#39;s <a href="https://www.linode.com/docs/websites/static-sites/how-to-choose-static-site-generator/">available</a> around the net these days is total overkill. The source is 100 lines of Typescript and it&#39;s actually <a href="/engine">served here</a> because why not? It&#39;s deployed via a git hook, from the site&#39;s <a href="https://github.com/skid/discodancer.net">public repo</a>.</p>
+<h2 id="how-it-works">How it works</h2>
+<ol>
+<li>Create a Markdown file in <code>/source</code></li>
+<li>Add a navigation link to it in <code>/source/_config.json</code></li>
+<li>Run <code>node engine</code> from the root dir to build the html pages.</li>
+<li>Git commit</li>
+<li>Push to git repo and the hook will copy it to my server</li>
+<li>If you want to change anything about the look and feel, do it in <code>assets/template.html</code> and <code>assets/style.css</code>, then rebuild.</li>
+</ol>
 
     </main>
     <footer>

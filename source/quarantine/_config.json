@@ -6,6 +6,7 @@
   "defaultMetaDescription": "Fourteen Days of Quarantine",
   "nav": [
     { "title": "Hompage", "link": "/" },
-    { "title": "Day One", "link": "day-one.md" }
+    { "title": "Series" },
+    { "title": "Day One", "link": "day-one.html" }
   ]
 }
