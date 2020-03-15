@@ -13,16 +13,9 @@ let config = {
 const reservedDirs = ['assets', 'engine', 'extras', 'uploads', 'source'];
 const rootPath = normalize(`${__dirname}/..`);
 const sourceDirPath = normalize(`${rootPath}/source`);
-const assetsDirPath = normalize(`${rootPath}/assets`);
 
 // Read the template upfront - we only have a single template for now
-let TEMPLATE: string = "";
-try {
-  TEMPLATE = readFileSync(normalize(`${assetsDirPath}/template.html`), 'utf-8');
-} catch {
-  console.log("Invalid assets/template.html file.");
-  process.exit(1);
-}
+const TEMPLATE = readFileSync(normalize(`${rootPath}/assets/template.html`), 'utf-8');
 
 // Recursively clean up old html pages before generating new ones
 // Important so that we remove htmls when we remove source .md files.
@@ -32,7 +25,7 @@ function cleanUp(dirPath: string = rootPath) {
     const stats = statSync(normalize(filePath));
     if (
       stats.isDirectory() &&
-      !fname.startsWith('.') &&
+      !fname.startsWith('.') && // Don't delete my git folder
       !reservedDirs.find(name => name === fname)
     ) {
       cleanUp(filePath);
