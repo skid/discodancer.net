@@ -7,6 +7,8 @@
   "nav": [
     { "title": "Hompage", "link": "/" },
     { "title": "Series" },
-    { "title": "Day One", "link": "day-one.html" }
+    { "title": "Day One", "link": "day-one.html" },
+    { "title": "Day Two", "link": "day-two.html" },
+    { "title": "Day Three", "link": "day-three.html" }
   ]
 }
