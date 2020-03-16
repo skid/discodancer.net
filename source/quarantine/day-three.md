@@ -7,7 +7,7 @@ date: 2020-03-16
 
 This is the first work day from quarantine. I used to work from home before my son was born, so this kind of reminded me of that, except that I used to be able to get outside the room without being dragged into a toy circus tent.
 
-I did a bunch of meetings, did some work and enjoyed the sumshine on the balcony. The we went for a walk with my family, making sure we stay quite a bit away from other people, which is quite easy since there's fery few of them on the streets anywy.
+I did a bunch of meetings, did some work and enjoyed the sunshine on the balcony. Then we went for a walk with my family, making sure we stay quite a bit away from other people, which was quite easy since there's fery few of them on the streets.
 
 We declared Work From Home for everyone in the company and the offices will shut down. Let's hope the internet providers and Google's infrastructure work well.
 
