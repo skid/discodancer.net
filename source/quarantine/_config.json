@@ -9,6 +9,9 @@
     { "title": "Series" },
     { "title": "Day One", "link": "day-one.html" },
     { "title": "Day Two", "link": "day-two.html" },
-    { "title": "Day Three", "link": "day-three.html" }
+    { "title": "Day Three", "link": "day-three.html" },
+    { "title": "Day Two", "link": "day-four.html" },
+    { "title": "Day Two", "link": "day-five.html" },
+    { "title": "Day Two", "link": "day-six.html" }
   ]
 }
