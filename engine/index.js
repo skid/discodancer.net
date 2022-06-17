@@ -4,37 +4,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const gray_matter_1 = __importDefault(require("gray-matter"));
-const marked_1 = __importDefault(require("marked"));
+const marked_1 = require("marked");
 const path_1 = require("path");
 const fs_1 = require("fs");
 let config = {
     index: "index.md",
     titlePrefix: "Untitled",
     defaultMetaDescription: "No description",
-    nav: []
+    nav: [],
 };
-const reservedDirs = ['assets', 'engine', 'extras', 'uploads', 'source'];
-const rootPath = path_1.normalize(`${__dirname}/..`);
-const sourceDirPath = path_1.normalize(`${rootPath}/source`);
+const reservedDirs = ["assets", "engine", "extras", "uploads", "source"];
+const rootPath = (0, path_1.normalize)(`${__dirname}/..`);
+const sourceDirPath = (0, path_1.normalize)(`${rootPath}/source`);
 // Read the template upfront - we only have a single template for now
-const TEMPLATE = fs_1.readFileSync(path_1.normalize(`${rootPath}/assets/template.html`), 'utf-8');
+const TEMPLATE = (0, fs_1.readFileSync)((0, path_1.normalize)(`${rootPath}/assets/template.html`), "utf-8");
 // Recursively clean up old html pages before generating new ones
 // Important so that we remove htmls when we remove source .md files.
 function cleanUp(dirPath = rootPath) {
-    fs_1.readdirSync(dirPath).forEach(fname => {
+    (0, fs_1.readdirSync)(dirPath).forEach((fname) => {
         const filePath = `${dirPath}/${fname}`;
-        const stats = fs_1.statSync(path_1.normalize(filePath));
+        const stats = (0, fs_1.statSync)((0, path_1.normalize)(filePath));
         if (stats.isDirectory() &&
-            !fname.startsWith('.') && // Don't delete my git folder
-            !reservedDirs.find(name => name === fname)) {
+            !fname.startsWith(".") && // Don't delete my git folder
+            !reservedDirs.find((name) => name === fname)) {
             cleanUp(filePath);
         }
-        else if (stats.isFile() && (fname.endsWith('html') || fname === '_config.json')) {
-            fs_1.unlinkSync(filePath);
+        else if (stats.isFile() && (fname.endsWith("html") || fname === "_config.json")) {
+            (0, fs_1.unlinkSync)(filePath);
         }
     });
     if (dirPath !== rootPath) {
-        fs_1.rmdirSync(dirPath);
+        (0, fs_1.rmdirSync)(dirPath);
     }
 }
 // Recursively parse the source dir and create htmls in the root dir
@@ -43,10 +43,10 @@ function parseSources(dirPath = sourceDirPath) {
     let sources = [];
     const targetDirPath = `${rootPath}/${dirPath.substr(sourceDirPath.length)}`;
     if (dirPath !== sourceDirPath) {
-        fs_1.mkdirSync(targetDirPath);
+        (0, fs_1.mkdirSync)(targetDirPath);
     }
     try {
-        sources = fs_1.readdirSync(dirPath);
+        sources = (0, fs_1.readdirSync)(dirPath);
     }
     catch {
         console.log(`Invalid source directory ${dirPath}`);
@@ -58,17 +58,19 @@ function parseSources(dirPath = sourceDirPath) {
     }
     sources = sources.filter((s) => s !== "_config.json");
     try {
-        const configStr = fs_1.readFileSync(path_1.normalize(`${dirPath}/_config.json`), 'utf-8');
+        const configStr = (0, fs_1.readFileSync)((0, path_1.normalize)(`${dirPath}/_config.json`), "utf-8");
         config = Object.assign({}, config, JSON.parse(configStr));
     }
     catch {
         console.log("Invalid source/_config.json file.");
         process.exit(1);
     }
-    const navHTML = config.nav.map((obj) => obj.link ? `<a href="${obj.link}">${obj.title}</a>` : `<span>${obj.title}</span>`).join('\n');
+    const navHTML = config.nav
+        .map((obj) => (obj.link ? `<a href="${obj.link}">${obj.title}</a>` : `<span>${obj.title}</span>`))
+        .join("\n");
     sources.forEach((name) => {
         console.log(dirPath, name);
-        if (fs_1.statSync(path_1.normalize(`${dirPath}/${name}`)).isDirectory()) {
+        if ((0, fs_1.statSync)((0, path_1.normalize)(`${dirPath}/${name}`)).isDirectory()) {
             parseSources(`${dirPath}/${name}`);
         }
         else {
@@ -83,8 +85,8 @@ function createPage(path, navHTML, dirPath = rootPath) {
     const isHTML = path.endsWith(".html");
     const { content, data } = gray_matter_1.default.read(path);
     if (isMarkdown) {
-        const pagename = path_1.parse(path).name;
-        const html = marked_1.default(content);
+        const pagename = (0, path_1.parse)(path).name;
+        const html = (0, marked_1.marked)(content);
         const result = TEMPLATE.replace(/\{\{(.+)\}\}/g, (_match, varName) => {
             switch (varName) {
                 case "meta-title":
@@ -100,13 +102,13 @@ function createPage(path, navHTML, dirPath = rootPath) {
                     }
                     return `${data.date.getFullYear()}-${data.date.getMonth() + 1}-${data.date.getDate()}`;
                 case "content":
-                    return marked_1.default(content);
+                    return (0, marked_1.marked)(content);
                 default:
                     console.warn(`Missing content for template var ${varName} in ${path}`);
                     return `{{ -?- ${varName} -?- }}`;
             }
         });
-        fs_1.writeFileSync(path_1.normalize(`${dirPath}/${pagename}.html`), result, 'utf-8');
+        (0, fs_1.writeFileSync)((0, path_1.normalize)(`${dirPath}/${pagename}.html`), result, "utf-8");
     }
 }
 cleanUp();
